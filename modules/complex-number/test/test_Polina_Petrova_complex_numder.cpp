@@ -23,19 +23,19 @@ TEST(ComplexNumberTest, Correct_op_plus_re) {
     ComplexNumber num1(1.5, 7.7);
     ComplexNumber num2(0.7, 7.3);
     ComplexNumber res = num1 + num2;
-    EXPECT_EQ(2.2, res.getRe());
+    EXPECT_DOUBLE_EQ(2.2, res.getRe());
 }
 TEST(ComplexNumberTest, Correct_op_plus_im) {
     ComplexNumber num1(1.5, 7.7);
     ComplexNumber num2(0.7, 7.3);
     ComplexNumber res = num1 + num2;
-    EXPECT_EQ(15.0, res.getIm());
+    EXPECT_DOUBLE_EQ(15.0, res.getIm());
 }
 TEST(ComplexNumberTest, Correct_op_minus) {
     ComplexNumber num1(1.5, 7.7);
     ComplexNumber num2(0.7, 7.3);
     ComplexNumber res = num1 - num2;
-    EXPECT_EQ(0.8, res.getRe());
+    EXPECT_DOUBLE_EQ(0.8, res.getRe());
 }
 TEST(ComplexNumberTest, Correct_eq) {
     ComplexNumber num1(1.5, 7.7);
