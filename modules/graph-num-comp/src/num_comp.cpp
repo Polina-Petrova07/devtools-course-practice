@@ -3,6 +3,7 @@
 #include <random>
 #include "../include/num_comp.h"
 
+
 // NOLINTNEXTLINE
 matrixType::matrixType(int n)
 {
@@ -25,5 +26,14 @@ matrixType::matrixType(std::vector<std::vector<int>> G, int numvert)
 {
 	matrixType::numVert = numvert;
 	matrixType::Graph = G;
+}
+int generateRandEdge()
+{
+	int k;
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> dist(0, 1);
+	k = dist(gen);
+	return k;
 }
 

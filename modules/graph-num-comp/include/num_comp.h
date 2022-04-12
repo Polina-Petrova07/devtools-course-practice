@@ -4,6 +4,9 @@
 #define MODULES_GRAPH_NUM_COMP_H_
 
 #include <vector>
+#include <random>
+
+int generateRandEdge();
 
 class matrixType {
 private:

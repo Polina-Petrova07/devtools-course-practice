@@ -3,6 +3,10 @@
 #include <gtest/gtest.h>
 #include "../include/num_comp.h"
 
+TEST(randTest, do_without_any_throw)
+{
+	ASSERT_NO_THROW(int n = generateRandEdge());
+}
 TEST(graphTest, can_do_graph_without_parametrs)
 {
 	ASSERT_NO_THROW(matrixType matrix (5));
@@ -45,6 +49,7 @@ TEST(graphTest, can_copy_graph_from_given_matrix_0)
 	// Act & Assert
 	ASSERT_NO_THROW(matrixType G(Graph, NUMVERTEX));
 }
+
 TEST(graphTest, can_copy_graph_from_given_matrix_1)
 {
 	//  Arrenge 
@@ -69,4 +74,8 @@ TEST(graphTest, can_copy_graph_from_given_matrix_1)
 
 	//  Assert
 	EXPECT_EQ(3, G.getNumVert());
+}
+TEST(graphTest, can_do_right_graph)  // we need graph without loop
+{
+
 }
