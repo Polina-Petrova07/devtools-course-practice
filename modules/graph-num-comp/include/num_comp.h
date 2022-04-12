@@ -16,6 +16,7 @@ public:
 	std::vector<bool> used;
 	matrixType(int n);  // where n - num of vertex
 	matrixType(std::vector<std::vector<int> > G, int numVert);
+	int& operator ()(int i, int j);
 	int getNumVert();
 	void DFS(int start, int f);
 	int numComp(int n, int f);

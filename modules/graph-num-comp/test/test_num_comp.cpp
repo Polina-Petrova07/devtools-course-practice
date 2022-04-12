@@ -7,6 +7,12 @@ TEST(randTest, do_without_any_throw)
 {
 	ASSERT_NO_THROW(int n = generateRandEdge());
 }
+TEST(randTest, do_number_less_two)
+{
+	//  Arrange & Act
+	int n = generateRandEdge();
+	EXPECT_GT(3, n);
+}
 TEST(graphTest, can_do_graph_without_parametrs)
 {
 	ASSERT_NO_THROW(matrixType matrix (5));
@@ -75,7 +81,26 @@ TEST(graphTest, can_copy_graph_from_given_matrix_1)
 	//  Assert
 	EXPECT_EQ(3, G.getNumVert());
 }
-TEST(graphTest, can_do_right_graph)  // we need graph without loop
+TEST(graphTest, operator_work_correct)
 {
+	//  Arrenge
+	matrixType G(3);
+	int k;
 
+	// Act & Assert
+	
+	ASSERT_NO_THROW(k = G(1, 1));
 }
+//TEST(graphTest, can_do_right_matrix)  //  we need matrix eithout loop
+//{
+//	matrixType G(3);
+//	std::vector<int> check;
+//	for (int i = 0; i < G.getNumVert(); i++)
+//	{
+//		for (int j = 0; j < G.getNumVert(); j++)
+//		{
+//			if (i == j)
+//				check.push_back(G[i][j]);
+//		}
+//	}
+//}

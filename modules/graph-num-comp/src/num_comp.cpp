@@ -14,13 +14,17 @@ matrixType::matrixType(int n)
 		for (int j = 0; j < numVert; j++)
 		{
 			Graph[i].push_back(0);
-			Graph[i][j] = 0;
+			Graph[i][j] = 0; //  generateRandEdge();
 		}
 	}
 }
 int matrixType::getNumVert()
 {
 	return this->Graph.size();
+}
+int& matrixType::operator()(int i, int j)
+{
+	return this->Graph[i][j];
 }
 matrixType::matrixType(std::vector<std::vector<int>> G, int numvert)
 {
