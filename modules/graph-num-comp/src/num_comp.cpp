@@ -19,6 +19,11 @@ matrixType::matrixType(int n)
 }
 int matrixType::getNumVert()
 {
-	return 7;
+	return this->Graph.size();
+}
+matrixType::matrixType(std::vector<std::vector<int>> G, int numvert)
+{
+	matrixType::numVert = numvert;
+	matrixType::Graph = G;
 }
 
