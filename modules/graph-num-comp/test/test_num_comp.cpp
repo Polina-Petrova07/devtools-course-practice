@@ -88,19 +88,38 @@ TEST(graphTest, operator_work_correct)
 	int k;
 
 	// Act & Assert
-	
 	ASSERT_NO_THROW(k = G(1, 1));
 }
-//TEST(graphTest, can_do_right_matrix)  //  we need matrix eithout loop
-//{
-//	matrixType G(3);
-//	std::vector<int> check;
-//	for (int i = 0; i < G.getNumVert(); i++)
-//	{
-//		for (int j = 0; j < G.getNumVert(); j++)
-//		{
-//			if (i == j)
-//				check.push_back(G[i][j]);
-//		}
-//	}
-//}
+TEST(graphTest, can_do_right_matrix_0)  //  we need matrix without loop
+{ 
+	//  Arrenge & Act
+	matrixType G(3);
+	std::vector<int> check;
+	for (int i = 0; i < G.getNumVert(); i++)
+	{
+		for (int j = 0; j < G.getNumVert(); j++)
+		{
+			if (i == j)
+				check.push_back(G(i,j));
+		}
+	}
+
+	//  Assert
+	for (int i = 0; i < G.getNumVert(); i++)
+		EXPECT_EQ(0, check[i]);
+}
+TEST(graphTest, can_do_right_matrix_1)
+{
+	//  Arrenge & Act
+	matrixType G(7);
+
+	//  Assert
+	for (int i = 0; i < G.getNumVert(); i++)
+	{
+		for (int j = 0; j < G.getNumVert(); j++)
+		{
+			if (i != j)
+				EXPECT_EQ(G(i, j), G(j, i));
+		}
+	}
+}

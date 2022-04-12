@@ -14,9 +14,15 @@ matrixType::matrixType(int n)
 		for (int j = 0; j < numVert; j++)
 		{
 			Graph[i].push_back(0);
-			Graph[i][j] = 0; //  generateRandEdge();
+			if (i == j)
+				Graph[i][j] = 0;
+			else
+				Graph[i][j] = generateRandEdge();
 		}
 	}
+	for (int i = 0; i < numVert; i++)
+		for (int j = 0; j < numVert; j++)
+			Graph[i][j] = Graph[j][i];
 }
 int matrixType::getNumVert()
 {
