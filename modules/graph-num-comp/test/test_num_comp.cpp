@@ -108,7 +108,7 @@ TEST(graphTest, can_do_right_matrix_0)  //  we need matrix without loop
 	for (int i = 0; i < G.getNumVert(); i++)
 		EXPECT_EQ(0, check[i]);
 }
-TEST(graphTest, can_do_right_matrix_1)
+TEST(graphTest, can_do_right_matrix_1)  //  we need symmetrical matrix
 {
 	//  Arrenge & Act
 	matrixType G(7);
@@ -122,4 +122,23 @@ TEST(graphTest, can_do_right_matrix_1)
 				EXPECT_EQ(G(i, j), G(j, i));
 		}
 	}
+}
+TEST(graphTest, DFS_no_any_throw)
+{
+	//  Arrenge
+	matrixType G(7);
+
+	//  Act & Assert
+	ASSERT_NO_THROW(G.DFS(0, 5));  //  5 - flag
+}
+TEST(graphTest, DFS_work_correct)
+{
+	//  Arrenge
+	matrixType G(7);
+
+	//  Act
+	G.DFS(0, 5);  //  5 - flag
+
+	//  Assert
+	EXPECT_EQ(G.getNumVert(), G.used.size());
 }
