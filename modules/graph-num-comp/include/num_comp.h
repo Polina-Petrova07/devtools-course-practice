@@ -19,6 +19,6 @@ public:
 	int& operator ()(int i, int j);
 	int getNumVert();
 	void DFS(int start, int f);
-	int numComp(int n, int f);
+	int numComp(int f);
 };
 #endif // !MODULES_GRAPH_NUM_COMP_H_

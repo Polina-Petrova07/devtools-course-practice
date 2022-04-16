@@ -123,7 +123,7 @@ TEST(graphTest, can_do_right_matrix_1)  //  we need symmetrical matrix
 		}
 	}
 }
-TEST(graphTest, DFS_no_any_throw)
+TEST(graphTest, DFS_work_without_any_throw)
 {
 	//  Arrenge
 	matrixType G(7);
@@ -141,4 +141,89 @@ TEST(graphTest, DFS_work_correct)
 
 	//  Assert
 	EXPECT_EQ(G.getNumVert(), G.used.size());
+}
+TEST(graphTest, numComp_work_without_any_throw)
+{
+	//  Arrengr & Act
+	matrixType G(7);
+
+	//  Assert
+	ASSERT_NO_THROW(G.numComp(5));
+}
+TEST(graphTest, numComp_work_correct_0)
+{
+	//  Arrenge
+	std::vector<std::vector<int>> v{
+		{0,1,0,0},
+		{1,0,0,0},
+		{0,0,0,1},
+		{0,0,1,0}
+	};
+	matrixType G(v, 4);
+
+	//  Act
+	int comp = 0;
+	comp = G.numComp(5);
+
+	//  Assert
+	EXPECT_EQ(2, comp);
+}
+TEST(graphTest, numComp_work_correct_1)
+{
+	//  Arrenge
+	std::vector<std::vector<int>> v{
+		{0,1,0,0,0},
+		{1,0,1,0,0},
+		{0,1,0,0,0},
+		{0,0,0,0,1},
+		{0,0,0,1,0}
+	};
+	matrixType G(v, 5);
+
+	//  Act
+	int comp = 0;
+	comp = G.numComp(5);
+
+	//  Assert
+	EXPECT_EQ(2, comp);
+}
+TEST(graphTest, numComp_work_correct_2)
+{
+	//  Arrenge
+	std::vector<std::vector<int>> v{
+		{0,1,1,0,0,0},
+		{1,0,0,0,0,0},
+		{1,0,0,0,0,0},
+		{0,0,0,0,1,0},
+		{0,0,0,1,0,0},
+		{0,0,0,0,0,0}
+	};
+	matrixType G(v, 6);
+
+	//  Act
+	int comp = 0;
+	comp = G.numComp(5);
+
+	//  Assert
+	EXPECT_EQ(3, comp);
+}
+TEST(graphTest, numComp_work_correct_3)
+{
+	//  Arrenge
+	std::vector<std::vector<int>> v{
+		{0,0,0,0,0,0},
+		{0,0,0,0,0,0},
+		{0,0,0,0,0,0},
+		{0,0,0,0,0,0},
+		{0,0,0,0,0,0},
+		{0,0,0,0,0,0}
+	};
+	matrixType G(v, 6);
+
+	//  Act
+	int comp = 0;
+	comp = G.numComp(5);
+
+	//  Assert
+	EXPECT_EQ(6, comp);
 }
