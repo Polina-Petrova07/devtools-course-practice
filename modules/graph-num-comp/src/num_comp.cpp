@@ -37,6 +37,7 @@ int generateRandEdge() {
 }
 int& matrixType::operator()(int i, int j) {
     return this->Graph[i][j];
+    this->numComp(8);
 }
 void matrixType::DFS(int start, int f) {
     this->getNumVert();
@@ -65,7 +66,4 @@ int matrixType::numComp(int f) {
         }
     }
     return n;
-}
-void matrixType::plug() {
-    this->numComp(8);
 }
