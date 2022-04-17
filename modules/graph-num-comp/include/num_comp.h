@@ -14,7 +14,7 @@ class matrixType {
     std::vector<std::vector<int> > Graph;
  public:
     std::vector<bool> used;
-    explicit matrixType(int n);  //  where n - num of vertex
+    explicit matrixType(int n);  // where n - num of vertex
     matrixType(std::vector<std::vector<int> > G, int numVert);
     int& operator ()(int i, int j);
     int getNumVert();

@@ -91,8 +91,9 @@ TEST(graphTest, can_do_right_matrix_1) {  // we need symmetrical matrix
     // Assert
     for (int i = 0; i < G.getNumVert(); i++) {
         for (int j = 0; j < G.getNumVert(); j++) {
-            if (i != j)
+            if (i != j) {
                 EXPECT_EQ(G(i, j), G(j, i));
+            }
         }
     }
 }
@@ -114,11 +115,8 @@ TEST(graphTest, operator_return_true_value) {
     };
     matrixType G(v, 4);
 
-    // Act
-    int k = G(2, 1);
-
-    // Assert
-    EXPECT_EQ(7, k);
+    // Act & Assert
+    EXPECT_EQ(7, G(2, 1));
 }
 TEST(graphTest, DFS_work_without_any_throw) {
     // Arrenge
