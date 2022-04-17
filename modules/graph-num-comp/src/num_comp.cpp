@@ -23,9 +23,9 @@ matrixType::matrixType(int n) {
 int matrixType::getNumVert() {
     return this->Graph.size();
 }
-matrixType::matrixType(std::vector<std::vector<int>> G, int numvert) {
-    matrixType::numVert = numvert;
-    matrixType::Graph = G;
+matrixType::matrixType(std::vector<std::vector<int>> G, int numvert) :Graph{ G }, numVert{numvert} {
+    //  matrixType::numVert = numvert;
+    //  matrixType::Graph = G;
 }
 int generateRandEdge() {
     int k;
@@ -36,8 +36,8 @@ int generateRandEdge() {
     return k;
 }
 int& matrixType::operator()(int i, int j) {
-    return this->Graph[i][j];
     this->numComp(8);
+    return this->Graph[i][j];
 }
 void matrixType::DFS(int start, int f) {
     this->getNumVert();
