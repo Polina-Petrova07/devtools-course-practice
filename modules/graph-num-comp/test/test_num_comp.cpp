@@ -1,6 +1,7 @@
 // Copyright 2022 Petrova Polina
 
 #include <gtest/gtest.h>
+#include <vector>
 #include "../include/num_comp.h"
 
 TEST(randTest, do_without_any_throw) {
