@@ -100,10 +100,9 @@ TEST(graphTest, can_do_right_matrix_1) {  // we need symmetrical matrix
 TEST(graphTest, operator_work_correct) {
     // Arrenge
     matrixType G(3);
-    int k;
 
     // Act & Assert
-    ASSERT_NO_THROW(k = G(1, 1));
+    ASSERT_NO_THROW(G(1, 1));
 }
 TEST(graphTest, operator_return_true_value) {
     // Arrenge
@@ -185,10 +184,10 @@ TEST(graphTest, numComp_work_correct_2) {
         {1, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 1, 0},
         {0, 0, 0, 1, 0, 0},
-		{0, 0, 0, 0, 0, 0}
+        {0, 0, 0, 0, 0, 0}
     };
     matrixType G(v, 6);
-    
+
     // Act
     int comp = 0;
     comp = G.numComp(5);
@@ -198,7 +197,7 @@ TEST(graphTest, numComp_work_correct_2) {
 }
 TEST(graphTest, numComp_work_correct_3) {
     // Arrenge
-	std::vector<std::vector<int>> v {
+    std::vector<std::vector<int>> v {
         {0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 0, 0},
