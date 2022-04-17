@@ -46,6 +46,7 @@ TEST(graphTest, can_copy_graph_from_given_matrix_0) {
         }
     }
     // Act & Assert
+ 
     ASSERT_NO_THROW(matrixType G(Graph, NUMVERTEX));
 }
 TEST(graphTest, can_copy_graph_from_given_matrix_1) {
@@ -68,7 +69,7 @@ TEST(graphTest, can_copy_graph_from_given_matrix_1) {
     matrixType G(Graph, NUMVERTEX);
 
     // Assert
-    EXPECT_EQ(3, G.getNumVert());
+     EXPECT_EQ(3, G.getNumVert());
 }
 TEST(graphTest, can_do_right_matrix_0) {  // we need matrix without loop
     // Arrenge & Act
@@ -114,7 +115,7 @@ TEST(graphTest, operator_return_true_value) {
         {0, 0, 1, 0}
     };
     matrixType G(v, 4);
-
+    
     // Act & Assert
     EXPECT_EQ(7, G(2, 1));
 }
@@ -169,7 +170,7 @@ TEST(graphTest, numComp_work_correct_1) {
         {0, 0, 0, 1, 0}
     };
     matrixType G(v, 5);
-
+   
     // Act
     int comp = 0;
     comp = G.numComp(5);
@@ -188,7 +189,7 @@ TEST(graphTest, numComp_work_correct_2) {
         {0, 0, 0, 0, 0, 0}
     };
     matrixType G(v, 6);
-
+   
     // Act
     int comp = 0;
     comp = G.numComp(5);
@@ -208,7 +209,7 @@ TEST(graphTest, numComp_work_correct_3) {
         {0, 0, 0, 0, 0, 0, 0}
     };
     matrixType G(v, 7);
-
+   
     // Act
     int comp = 0;
     comp = G.numComp(5);
