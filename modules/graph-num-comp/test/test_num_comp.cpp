@@ -80,6 +80,39 @@ TEST(graphTest, can_copy_graph_from_given_matrix_1)
 	//  Assert
 	EXPECT_EQ(3, G.getNumVert());
 }
+TEST(graphTest, can_do_right_matrix_0)  //  we need matrix without loop
+{
+	//  Arrenge & Act
+	matrixType G(3);
+	std::vector<int> check;
+	for (int i = 0; i < G.getNumVert(); i++)
+	{
+		for (int j = 0; j < G.getNumVert(); j++)
+		{
+			if (i == j)
+				check.push_back(G(i, j));
+		}
+	}
+
+	//  Assert
+	for (int i = 0; i < G.getNumVert(); i++)
+		EXPECT_EQ(0, check[i]);
+}
+TEST(graphTest, can_do_right_matrix_1)  //  we need symmetrical matrix
+{
+	//  Arrenge & Act
+	matrixType G(7);
+
+	//  Assert
+	for (int i = 0; i < G.getNumVert(); i++)
+	{
+		for (int j = 0; j < G.getNumVert(); j++)
+		{
+			if (i != j)
+				EXPECT_EQ(G(i, j), G(j, i));
+		}
+	}
+}
 TEST(graphTest, operator_work_correct)
 {
 	//  Arrenge
@@ -105,4 +138,23 @@ TEST(graphTest, operator_return_true_value)
 
 	//  Assert
 	EXPECT_EQ(7, k);
+}
+TEST(graphTest, DFS_work_without_any_throw)
+{
+	//  Arrenge
+	matrixType G(7);
+
+	//  Act & Assert
+	ASSERT_NO_THROW(G.DFS(0, 5));  //  5 - flag
+}
+TEST(graphTest, DFS_work_correct)
+{
+	//  Arrenge
+	matrixType G(7);
+
+	//  Act
+	G.DFS(0, 5);  //  5 - flag
+
+	//  Assert
+	EXPECT_EQ(G.getNumVert(), G.used.size());
 }

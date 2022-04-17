@@ -44,3 +44,17 @@ int& matrixType::operator()(int i, int j)
 {
 	return this->Graph[i][j];
 }
+void matrixType::DFS(int start, int f)
+{
+	if (f != 0)
+	{
+		for (int i = 0; i < this->numVert; i++)
+			this->used.push_back(false);
+		f = 0;
+	}
+	// std::cout << start << " ";
+	this->used[start] = true;
+	for (int i = 0; i < this->numVert; i++)
+		if (!used[i] && (this->Graph[start][i] != 0))
+			DFS(i, f);
+}
