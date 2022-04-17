@@ -2,6 +2,35 @@
 
 #include"../include/num_comp.h"
 
+// NOLINTNEXTLINE
+matrixType::matrixType(int n)
+{
+	matrixType::numVert = n;
+	for (int i = 0; i < numVert; i++)
+	{
+		matrixType::Graph.push_back(std::vector<int>());
+		for (int j = 0; j < numVert; j++)
+		{
+			Graph[i].push_back(0);
+			if (i == j)
+				Graph[i][j] = 0;
+			else
+				Graph[i][j] = generateRandEdge();
+		}
+	}
+	for (int i = 0; i < numVert; i++)
+		for (int j = 0; j < numVert; j++)
+			Graph[i][j] = Graph[j][i];
+}
+int matrixType::getNumVert()
+{
+	return this->Graph.size();
+}
+matrixType::matrixType(std::vector<std::vector<int>> G, int numvert)
+{
+	matrixType::numVert = numvert;
+	matrixType::Graph = G;
+}
 int generateRandEdge()
 {
 	int k;
