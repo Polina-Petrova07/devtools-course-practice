@@ -29,7 +29,7 @@ TEST(graphTest, can_do_matrix_with_a_given_size_1) {
     EXPECT_EQ(33, matrix.getNumVert());
 }
 TEST(graphTest, can_copy_graph_from_given_matrix_0) {
-    // Arrenge 
+    // Arrenge
     std::vector<std::vector<int>> Graph;
     const int NUMVERTEX = 3;
     int matrix[NUMVERTEX][NUMVERTEX] = {
@@ -48,7 +48,7 @@ TEST(graphTest, can_copy_graph_from_given_matrix_0) {
     ASSERT_NO_THROW(matrixType G(Graph, NUMVERTEX));
 }
 TEST(graphTest, can_copy_graph_from_given_matrix_1) {
-    // Arrenge 
+    // Arrenge
     std::vector<std::vector<int>> Graph;
     const int NUMVERTEX = 3;
     int matrix[NUMVERTEX][NUMVERTEX] = {
@@ -159,8 +159,7 @@ TEST(graphTest, numComp_work_correct_0) {
     // Assert
     EXPECT_EQ(2, comp);
 }
-TEST(graphTest, numComp_work_correct_1)
-{
+TEST(graphTest, numComp_work_correct_1) {
     // Arrenge
     std::vector<std::vector<int>> v {
         {0, 1, 0, 0, 0},
@@ -189,7 +188,7 @@ TEST(graphTest, numComp_work_correct_2) {
 		{0, 0, 0, 0, 0, 0}
     };
     matrixType G(v, 6);
-
+    
     // Act
     int comp = 0;
     comp = G.numComp(5);
