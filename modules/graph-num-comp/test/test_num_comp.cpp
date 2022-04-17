@@ -126,7 +126,7 @@ TEST(graphTest, DFS_work_without_any_throw) {
     // Act & Assert
     ASSERT_NO_THROW(G.DFS(0, 5));  // 5 - flag
 }
-TEST(graphTest, DFS_work_correct) {
+/*TEST(graphTest, DFS_work_correct) {
     // Arrenge
     matrixType G(7);
 
@@ -135,7 +135,7 @@ TEST(graphTest, DFS_work_correct) {
 
     // Assert
     EXPECT_EQ(7, G.used.size());
-}
+}*/
 TEST(graphTest, numComp_work_without_any_throw) {
     // Arrengr & Act
     matrixType G(7);
