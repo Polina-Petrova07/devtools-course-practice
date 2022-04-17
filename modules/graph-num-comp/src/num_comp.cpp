@@ -40,3 +40,7 @@ int generateRandEdge()
 	k = dist(gen);
 	return k;
 }
+int& matrixType::operator()(int i, int j)
+{
+	return this->Graph[i][j];
+}
