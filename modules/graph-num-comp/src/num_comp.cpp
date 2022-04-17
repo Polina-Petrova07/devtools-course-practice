@@ -1,13 +1,14 @@
 // Copyright 2022 Petrova Polina
 
 #include"../include/num_comp.h"
+#include <vector>
 
 // NOLINTNEXTLINE
 matrixType::matrixType(int n) {
     matrixType::numVert = n;
     for (int i = 0; i < numVert; i++) {
         matrixType::Graph.push_back(std::vector<int>());
-        for (int j = 0; j < numVert; j++){
+        for (int j = 0; j < numVert; j++) {
             Graph[i].push_back(0);
             if (i == j)
                 Graph[i][j] = 0;
@@ -43,7 +44,7 @@ void matrixType::DFS(int start, int f) {
             this->used.push_back(false);
         f = 0;
     }
-	//  std::cout << start << " ";
+    //  std::cout << start << " ";
     this->used[start] = true;
     for (int i = 0; i < this->numVert; i++)
         if (!used[i] && (this->Graph[start][i] != 0))

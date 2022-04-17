@@ -21,4 +21,4 @@ class matrixType {
     void DFS(int start, int f);
     int numComp(int f);
 };
-#endif //  !MODULES_GRAPH_NUM_COMP_INCLUDE_NUM_COMP_H_
+#endif  // MODULES_GRAPH_NUM_COMP_INCLUDE_NUM_COMP_H_
