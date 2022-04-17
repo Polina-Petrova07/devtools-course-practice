@@ -47,7 +47,7 @@ TEST(graphTest, can_copy_graph_from_given_matrix_0) {
     }
     // Act & Assert
 
-    ASSERT_NO_THROW(matrixType G(Graph, NUMVERTEX));
+    ASSERT_NO_THROW(matrixType G(NUMVERTEX, Graph));
 }
 TEST(graphTest, can_copy_graph_from_given_matrix_1) {
     // Arrenge
@@ -66,7 +66,7 @@ TEST(graphTest, can_copy_graph_from_given_matrix_1) {
         }
     }
     // Act
-    matrixType G(Graph, NUMVERTEX);
+    matrixType G(NUMVERTEX, Graph);
 
     // Assert
      EXPECT_EQ(3, G.getNumVert());
@@ -114,7 +114,7 @@ TEST(graphTest, operator_return_true_value) {
         {0, 7, 0, 1},
         {0, 0, 1, 0}
     };
-    matrixType G(v, 4);
+    matrixType G(4, v);
 
     // Act & Assert
     EXPECT_EQ(7, G(2, 1));
@@ -151,7 +151,7 @@ TEST(graphTest, numComp_work_correct_0) {
         {0, 0, 0, 1},
         {0, 0, 1, 0}
     };
-    matrixType G(v, 4);
+    matrixType G(4, v);
 
     // Act
     int comp = 0;
@@ -169,7 +169,7 @@ TEST(graphTest, numComp_work_correct_1) {
         {0, 0, 0, 0, 1},
         {0, 0, 0, 1, 0}
     };
-    matrixType G(v, 5);
+    matrixType G(5, v);
 
     // Act
     int comp = 0;
@@ -188,7 +188,7 @@ TEST(graphTest, numComp_work_correct_2) {
         {0, 0, 0, 1, 0, 0},
         {0, 0, 0, 0, 0, 0}
     };
-    matrixType G(v, 6);
+    matrixType G(6, v);
 
     // Act
     int comp = 0;
@@ -208,7 +208,7 @@ TEST(graphTest, numComp_work_correct_3) {
         {0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 0, 0}
     };
-    matrixType G(v, 7);
+    matrixType G(7, v);
 
     // Act
     int comp = 0;
