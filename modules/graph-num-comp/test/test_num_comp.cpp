@@ -134,7 +134,7 @@ TEST(graphTest, DFS_work_correct) {
     G.DFS(0, 5);  // 5 - flag
 
     // Assert
-    EXPECT_EQ(G.getNumVert(), G.used.size());
+    EXPECT_EQ(7, G.used.size());
 }
 TEST(graphTest, numComp_work_without_any_throw) {
     // Arrengr & Act
