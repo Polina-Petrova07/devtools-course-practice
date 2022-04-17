@@ -58,3 +58,22 @@ void matrixType::DFS(int start, int f)
 		if (!used[i] && (this->Graph[start][i] != 0))
 			DFS(i, f);
 }
+int matrixType::numComp(int f)
+{
+	if (f != 0)
+	{
+		for (int i = 0; i < this->numVert; i++)
+			this->used.push_back(false);
+		f = 0;
+	}
+	int n = 0;
+	for (int i = 0; i < this->numVert; i++)
+	{
+		if (!used[i])
+		{
+			++n;
+			matrixType::DFS(i, f);
+		}
+	}
+	return n;
+}
