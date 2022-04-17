@@ -20,5 +20,6 @@ class matrixType {
     int getNumVert();
     void DFS(int start, int f);
     int numComp(int f);
+    void plug();
 };
 #endif  // MODULES_GRAPH_NUM_COMP_INCLUDE_NUM_COMP_H_

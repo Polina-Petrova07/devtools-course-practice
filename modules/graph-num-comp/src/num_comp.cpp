@@ -66,3 +66,6 @@ int matrixType::numComp(int f) {
     }
     return n;
 }
+void matrixType::plug() {
+    this->numComp(8);
+}
