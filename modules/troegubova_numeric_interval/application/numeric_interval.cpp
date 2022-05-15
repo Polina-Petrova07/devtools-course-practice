@@ -1,10 +1,12 @@
 // Copyright 2022 Petrova Polina
 
-#include "include/numeric_interval_app.h"
 
-#include <string>
+
 #include <stdlib.h>
 #include <stdio.h>
+#include <string>
+
+#include "../include/numeric_interval_app.h"
 
 int main(int argc, const char** argv) {
     Application app;

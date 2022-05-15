@@ -7,21 +7,16 @@
 #include <vector>
 
 class Application {
-public:
-	Application();
-	std::string operator()(int argc, const char** argv);
+ public:
+    Application();
+    std::string operator()(int argc, const char** argv);
+    int parseOperation(const char* arg, int argc);
 
-private:
-	void help(const char* appname, const char* message = "");
-	bool validateNumberOfArguments(int argc, const char** argv);
-	std::string message_;
-	typedef struct {
-		int left_border;
-		int right_border;
-		bool left_include;
-		bool right_include;
-		std::vector<int> range;
-	} Arguments;
+ private:
+    void help(const char* appname, const char* message = "");
+    bool validateNumberOfArguments(int argc, const char** argv);
+    std::string message_;
+    int op;
 };
 
-#endif // MODULES_TROEGUBOVA_NUMERIC_INTERVAL_INCLUDE_NUMERIC_INTERVAL_APP_H_
+#endif  // MODULES_TROEGUBOVA_NUMERIC_INTERVAL_INCLUDE_NUMERIC_INTERVAL_APP_H_

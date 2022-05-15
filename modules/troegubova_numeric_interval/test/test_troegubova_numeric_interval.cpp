@@ -232,7 +232,7 @@ TEST(Troegubova_Alexandra_Numeric_Interval_Test,
     NamericInterval a(3, 8, true, false);
     NamericInterval b(3, 8, false, false);
 
-    ASSERT_FALSE(a == b);
+    ASSERT_TRUE(a == b);
 }
 
 TEST(Troegubova_Alexandra_Numeric_Interval_Test,
@@ -240,7 +240,7 @@ TEST(Troegubova_Alexandra_Numeric_Interval_Test,
     NamericInterval a(3, 8, true, false);
     NamericInterval b(-10, 8, false, false);
 
-    ASSERT_TRUE(a != b);
+    ASSERT_FALSE(a != b);
 }
 
 TEST(Troegubova_Alexandra_Numeric_Interval_Test,

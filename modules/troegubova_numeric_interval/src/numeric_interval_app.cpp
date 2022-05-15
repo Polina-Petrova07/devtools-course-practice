@@ -1,144 +1,160 @@
 // Copyright 2022 Petrova Polina
 
 
-#include "include/numeric_interval.h"
-#include "include/numeric_interval_app.h"
-
-#include <iostream>
-#include <vector>
-#include <string>
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
+#include <iostream>
+#include <vector>
+#include <string>
 #include <sstream>
 
-Application::Application() : message_("") {}
+#include "../include/numeric_interval.h"
+#include "../include/numeric_interval_app.h"
+
+Application::Application() : message_(""), op(0) {}
 
 void Application::help(const char* appname, const char* message) {
-	message_ =
-		std::string(message) +
-		"This is application works with numeric intervals. \n\n" +
-		"Determines whether the given range is contained in the interval\n\n" +
-		"Please provide arguments in the following format: \n\n" +
-
-		" $ " + appname + " <left border> <right border>" +
-		"<include left border> <include right border> <your range>\n\n" +
-
-		"Where left and right borders are int-precision numbers" +
-		"and <include left border> and <include right border>" +
-		"have value true or false.\n";
+    message_ =
+        std::string(message) +
+        "This is application works with numeric intervals. \n\n" +
+        "There all formats, you can write:\n" +
+        "\t 'contain_a' <range> <int_size> <values> - Is range contain an " +
+        "integer interval?\n" +
+        "\t 'all_p' <range> - Get all points in range\n" +
+        "\t 'contain_r' <range_1> <range_2> - Is range contain another " +
+        "range?\n" +
+        "\t 'end_p' <range> - Get end points of range\n" +
+        "\t 'overlap' <range_1> <range_2> - "+
+        "Is range overlaps another range?\n" +
+        "\t 'equal' <range_1> <range_2> - Do they equal?\n\n";
 }
 
 bool Application::validateNumberOfArguments(int argc, const char** argv) {
-	if (argc == 1) {
-		help(argv[0]);
-		return false;
-	} else if (argc != 6) {
-		help(argv[0], "ERROR: Should be 5 arguments. \n\n");
-		return false;
-	}
-	return false;
+    if (argc == 1) {
+        help(argv[0]);
+        return false;
+    } else if (argc != 6) {
+        help(argv[0], "ERROR: Should be 5 arguments. \n\n");
+        return false;
+    }
+    return false;
 }
 int parseInt(const char* arg) {
-	char* end;
-	int value = static_cast<int>(strtod(arg,&end));
-
-	if (end[0]) {
-		throw std::string("Wrong numder format!");
-	}
-	return value;
-}
-bool parserBool(const char* arg) {
-	bool f;
-	if (strcmp(arg, "true") == 0) {
-		f = true;
-	} else if (strcmp(arg, "false") == 0) {
-		f = false;
-	} else {
-		throw std::string("Wrong value!");
-	}
-	return f;
-}
-std::vector<int> parserVector(const char* arg) {
-	char* end;
-	int n;
-	std::string strVec = arg;
-	std::string strInt = "";
-	std::vector<int> vec;
-
-	for (unsigned int i = 0; i < strVec.size(); i++) {
-		if (strVec[i] == ',') {
-			if (strInt == "") {
-				throw std::string("Wrong vector format!");
-			}
-			n = static_cast<int>(strtod(strInt.c_str(), &end));
-			if (end[0]) {
-				throw std::string("Wrong vector format!");
-			}
-			vec.push_back(n);
-			strInt = "";
-		} else {
-			strInt += strVec[i];
-		}
-		if (strInt == "") {
-			throw std::string("Wrong vector format!");
-		}
-		n = static_cast<int>(strtod(strInt.c_str(), &end));
-		if (end[0])
-			throw std::string("Wrong vector format!");
-	}
-	vec.push_back(n);
-
-	return vec;
+    int i = 0;
+    while (arg[i] != '\0') {
+        if (!isdigit(arg[i++]))
+            throw std::string("Wrong number format!");
+    }
+    return atoi(arg);
 }
 
-std::string Application::operator() (int argc, const char** argv) {
-	Arguments args;
-	std::ostringstream stream;
-
-	if (!validateNumberOfArguments(argc, argv)) {
-		return message_;
-	}
-	try {
-		args.left_border = parseInt(argv[1]);
-		args.right_border = parseInt(argv[2]);
-		args.left_include = parserBool(argv[3]);
-		args.right_include = parserBool(argv[4]);
-		args.range = parserVector(argv[5]);
-	} catch (std::string& str) {
-		return str;
-	}
-	NamericInterval interval(args.left_border, args.right_border, args.left_include, args.right_include);
-	std::string brack_l, brack_r;
-	if (args.left_include == true) {
-		brack_l = "[";
-	} else {
-		brack_l = "(";
-	}
-    if (args.right_include == true) {
-		brack_r = "]";
+int Application::parseOperation(const char* arg, int argc) {
+    int op;
+    if ((strcmp(arg, "contain_a") == 0)) {
+        if (argc < 4)
+            throw std::string("ERROR: Must be 3 args for contain_a");
+        op = 0;
+    } else if (strcmp(arg, "all_p") == 0) {
+        if (argc != 3)
+            throw std::string("ERROR: Must be 2 args for all_p");
+        op = 1;
+    } else if (strcmp(arg, "contain_r") == 0) {
+        if (argc != 4)
+            throw std::string("ERROR: Must be 3 args for contain_r");
+        op = 2;
+    } else if (strcmp(arg, "end_p") == 0) {
+        if (argc != 3)
+            throw std::string("ERROR: Must be 2 args for end_p");
+        op = 3;
+    } else if (strcmp(arg, "overlap") == 0) {
+        if (argc != 4)
+            throw std::string("ERROR: Must be 3 args for overlap");
+        op = 4;
+    } else if (strcmp(arg, "equal") == 0) {
+        if (argc != 4)
+            throw std::string("ERROR: Must be 3 args for equal");
+        op = 5;
     } else {
-        brack_r = ")";
+        throw std::string("Wrong operation format!");
     }
 
-    stream << "your interval: " << brack_l << args.left_border << " , "
-        << args.right_border << brack_r << std::endl;
-    stream << "your range: ";
-	for (unsigned int i = 0; i < args.range.size(); i++) {
-		stream << args.range[i] << " ";
-    }
-	try {
-		bool f;
-		f = interval.containsIntegerRange(args.range);
-		stream << "anser: " << f;
-		break;
-	}
-	catch (std::string& str) {
-		return str;
-	}
-	message_ = stream.str();
+    return op;
+}
 
-	return message_;
+std::string Application::operator()(int argc, const char** argv) {
+    if (argc == 1) {
+        help(argv[0]);
+        return message_;
+    }
+
+    try {
+        op = parseOperation(argv[1], argc);
+    }
+    catch (std::string& str) {
+        return str;
+    }
+
+    NamericInterval r(argv[2]);
+    std::ostringstream stream;
+
+    switch (op) {
+    case 0:
+        int len;
+        int* arr;
+
+        try {
+            len = parseInt(argv[3]);
+            arr = new int[len];
+            for (int i = 0; i < len; i++) {
+                arr[i] = parseInt(argv[i + 4]);
+            }
+        }
+        catch (std::string& str) {
+            return str;
+        }
+
+        if (r.IntegerRangeContains(arr, len))
+            stream << "TRUE";
+        else
+            stream << "FALSE";
+
+        delete[] arr;
+        break;
+    case 1:
+        stream << r.GetAllPoints();
+        break;
+
+    case 2:
+        if (r.ContainsRange(argv[3]))
+            stream << "TRUE";
+        else
+            stream << "FALSE";
+        break;
+
+    case 3:
+        stream << r.EndPoints();
+        break;
+
+    case 4:
+        if (r.OverlapsRange(argv[3]))
+            stream << "TRUE";
+        else
+            stream << "FALSE";
+        break;
+
+    case 5:
+        NamericInterval r1(argv[3]);
+
+        if (r == r1)
+            stream << "TRUE";
+        else
+            stream << "FALSE";
+        break;
+    }
+
+    message_ = stream.str();
+
+    return message_;
 }
