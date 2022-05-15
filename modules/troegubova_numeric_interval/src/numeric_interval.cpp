@@ -1,6 +1,7 @@
 // Copyright 2022 Troegubova Alexandra
 
 #include <vector>
+#include <string>
 
 #include "include/numeric_interval.h"
 
