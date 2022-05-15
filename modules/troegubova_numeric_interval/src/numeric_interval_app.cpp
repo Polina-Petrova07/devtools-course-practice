@@ -31,16 +31,6 @@ void Application::help(const char* appname, const char* message) {
         "\t 'equal' <range_1> <range_2> - Do they equal?\n\n";
 }
 
-bool Application::validateNumberOfArguments(int argc, const char** argv) {
-    if (argc == 1) {
-        help(argv[0]);
-        return false;
-    } else if (argc != 6) {
-        help(argv[0], "ERROR: Should be 5 arguments. \n\n");
-        return false;
-    }
-    return false;
-}
 int parseInt(const char* arg) {
     int i = 0;
     while (arg[i] != '\0') {

@@ -14,7 +14,6 @@ class Application {
 
  private:
     void help(const char* appname, const char* message = "");
-    bool validateNumberOfArguments(int argc, const char** argv);
     std::string message_;
     int op;
 };
