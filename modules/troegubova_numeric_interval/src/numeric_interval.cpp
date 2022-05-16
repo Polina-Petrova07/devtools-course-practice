@@ -18,7 +18,7 @@ NamericInterval::NamericInterval(int left_border_,
 //
 
 NamericInterval::NamericInterval(std::string str) {
-    int size = strlen(str.c_str()) - 1;
+    int size = std::strlen(str.c_str()) - 1;
 
     if (str[0] != '[')
         if (str[0] != '(')
