@@ -2,11 +2,11 @@
 
 #include <vector>
 #include <string>
+#include <cstring>
 
 #include "include/numeric_interval.h"
 
 using std::vector;
-using std::string;
 
 NamericInterval::NamericInterval() : left_border(0), right_border(0),
 left_include(true), right_include(true) {}
