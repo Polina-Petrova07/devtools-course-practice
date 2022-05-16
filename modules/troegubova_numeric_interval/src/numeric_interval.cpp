@@ -6,6 +6,7 @@
 #include "include/numeric_interval.h"
 
 using std::vector;
+using std::string;
 
 NamericInterval::NamericInterval() : left_border(0), right_border(0),
 left_include(true), right_include(true) {}
@@ -18,7 +19,7 @@ NamericInterval::NamericInterval(int left_border_,
 //
 
 NamericInterval::NamericInterval(std::string str) {
-    int size = std::strlen(str.c_str()) - 1;
+    int size = strlen(str.c_str()) - 1;
 
     if (str[0] != '[')
         if (str[0] != '(')
