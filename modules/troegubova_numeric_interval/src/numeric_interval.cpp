@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <string>
+
 #include <cstring>
 
 #include "include/numeric_interval.h"
@@ -19,7 +20,7 @@ NamericInterval::NamericInterval(int left_border_,
 //
 
 NamericInterval::NamericInterval(std::string str) {
-    int size = strlen(str.c_str()) - 1;
+    int size = strlen(str.c_str()) - 1;  // cstring
 
     if (str[0] != '[')
         if (str[0] != '(')
